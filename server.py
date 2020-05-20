@@ -15,16 +15,6 @@ def html_page(page_name):
     return render_template(f'{page_name}.html')
 
 
-# def write_to_database(data):
-#     name = data['name']
-#     email = data['email']
-#     subject = data['subject']
-#     message = data['message']
-#     with open('database.txt', mode='a') as database:
-#         text = f"\n{name}, {email}, {subject}, {message}"
-#         database.write(text)
-
-
 def write_to_csv_database(data):
     name = data['name']
     email = data['email']
@@ -41,7 +31,6 @@ def login():
     if request.method == 'POST':
         data = request.form.to_dict()
         print(data)
-        write_to_database(data)
         write_to_csv_database(data)
         return render_template('/thankyou.html', name=data['name'])
     else:
